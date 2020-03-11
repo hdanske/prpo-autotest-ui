@@ -58,6 +58,35 @@ Feature: Администрирование ПКУ
     * def buttonsUpAndDown = locateAll('.ui-spinner-button.ui-spinner-up.ui-corner-tr.ui-button.ui-widget.ui-state-default')
     * def csvButtonUp = buttonsUpAndDown.get(0)
     * csvButtonUp.focus().mouse().click()
+
+    * waitFor('div[data-cy-csp-mapping-internal*=CSV]')
+    * def field = locateAll('div[data-cy-csp-mapping-internal*=CSV]')
+    * def len = karate.sizeOf(field)
+#    * match len == 1
+    * def csvCspChargeId = field.get(0)
+    * def pos1 = position('div[data-cy-csp-mapping-internal*=CSV]')
+    Then print 'test1', pos1
+
+#    * waitFor('div[data-cy-csp-mapping-internal*=CSV]')
+    * def fieldOut = locateAll('div[data-cy-csp-mapping-external*=CSV]')
+    * def len = karate.sizeOf(fieldOut)
+    * def csvCspOutChargeId = fieldOut.get(0)
+    * def pos2 = position('div[data-cy-csp-mapping-external*=CSV]')
+    Then print 'test2', pos2
+
+
+#    * mouse('div[data-cy-csp-mapping-internal*=CSV]').go()
+#    * mouse('div[data-cy-csp-mapping-internal*=CSV]').click()
+#    * mouse().down().move('div[data-cy-csp-mapping-external*=CSV]').up()
+
+    * mouse(128, 138).go()
+    * mouse(128, 138).click()
+    * mouse().down().move(128, 439).up()
+
+    * mouse('div[data-cy-csp-mapping-internal*=CSV]:first-child').go()
+    * mouse('div[data-cy-csp-mapping-internal*=CSV]:first-child').click()
+    * mouse().down().move('div[data-cy-csp-mapping-external*=CSV]:first-child').up()
+
 #    * csvButtonUp.click()
 
 
